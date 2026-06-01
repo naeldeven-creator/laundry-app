@@ -1,0 +1,344 @@
+/* CSS Desain Sistem Premium - Tema Gold & White Elegant */
+
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&display=swap');
+
+:root {
+  /* HSL Color Tokens - Emas Mewah (Gold) & Putih Bersih (White) */
+  --primary-hue: 43; /* Hue untuk warna Emas/Gold */
+  --primary: hsl(var(--primary-hue), 55%, 52%); /* #c5a85c */
+  --primary-hover: hsl(var(--primary-hue), 55%, 42%); /* #a3863e */
+  --primary-glow: hsla(var(--primary-hue), 55%, 52%, 0.25);
+  
+  --bg-gradient: linear-gradient(135deg, #fdfcf7 0%, #f7f5ed 50%, #ece9da 100%);
+  --card-bg: rgba(255, 255, 255, 0.85);
+  --card-border: rgba(197, 168, 92, 0.2);
+  --card-glow: rgba(197, 168, 92, 0.05);
+  
+  --text-primary: #2d2922; /* Charcoal kecokelatan hangat */
+  --text-secondary: #686256; /* Abu-abu kecokelatan medium */
+  --text-muted: #9c9689; /* Abu-abu hangat pudar */
+  
+  --input-bg: #ffffff;
+  --input-border: rgba(197, 168, 92, 0.3);
+  --input-focus: hsl(var(--primary-hue), 55%, 48%);
+  
+  /* Status Colors (Pastel Elegan dengan Keterbacaan Tinggi di Latar Terang) */
+  --queued-bg: rgba(197, 168, 92, 0.12);
+  --queued-text: #a08133;
+  --queued-border: rgba(197, 168, 92, 0.3);
+  
+  --washing-bg: rgba(37, 99, 235, 0.08);
+  --washing-text: #1d4ed8;
+  --washing-border: rgba(37, 99, 235, 0.2);
+  
+  --drying-bg: rgba(124, 58, 237, 0.08);
+  --drying-text: #6d28d9;
+  --drying-border: rgba(124, 58, 237, 0.2);
+  
+  --ready-bg: rgba(5, 150, 105, 0.08);
+  --ready-text: #047857;
+  --ready-border: rgba(5, 150, 105, 0.2);
+  
+  --taken-bg: rgba(75, 85, 99, 0.08);
+  --taken-text: #374151;
+  --taken-border: rgba(75, 85, 99, 0.2);
+  
+  /* Payment Colors */
+  --paid-bg: rgba(4, 120, 87, 0.12);
+  --paid-text: #047857;
+  --unpaid-bg: rgba(220, 38, 38, 0.1);
+  --unpaid-text: #b91c1c;
+  
+  /* Layout Options */
+  --sidebar-width: 260px;
+  --border-radius-sm: 8px;
+  --border-radius-md: 14px;
+  --border-radius-lg: 24px;
+  
+  --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  
+  --transition-fast: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-normal: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Base Styles */
+* {
+  box-sizing: border-box;
+  padding: 0;
+  margin: 0;
+}
+
+html, body {
+  width: 100%;
+  height: 100%;
+  font-family: var(--font-sans);
+  color: var(--text-primary);
+  background: var(--bg-gradient);
+  background-attachment: fixed;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulseGlow {
+  0% { box-shadow: 0 0 5px var(--primary-glow); }
+  50% { box-shadow: 0 0 20px var(--primary-glow); }
+  100% { box-shadow: 0 0 5px var(--primary-glow); }
+}
+
+/* Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.03);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(197, 168, 92, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--primary);
+}
+
+/* Utility Classes */
+.glass-panel {
+  background: var(--card-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--card-border);
+  border-radius: var(--border-radius-md);
+  box-shadow: 0 8px 32px 0 rgba(197, 168, 92, 0.08), inset 0 1px 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.glass-card-hover {
+  transition: var(--transition-normal);
+}
+
+.glass-card-hover:hover {
+  transform: translateY(-4px);
+  border-color: rgba(197, 168, 92, 0.4);
+  box-shadow: 0 12px 40px 0 rgba(197, 168, 92, 0.15), 0 0 25px 0 var(--card-glow);
+}
+
+/* Form Controls */
+.form-group {
+  margin-bottom: 1.25rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-label {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+  letter-spacing: 0.03em;
+}
+
+.form-input {
+  width: 100%;
+  padding: 0.75rem 1rem;
+  background: var(--input-bg);
+  border: 1px solid var(--input-border);
+  border-radius: var(--border-radius-sm);
+  color: var(--text-primary);
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  transition: var(--transition-fast);
+  outline: none;
+}
+
+.form-input:focus {
+  border-color: var(--input-focus);
+  box-shadow: 0 0 0 3px var(--primary-glow);
+}
+
+.form-input::placeholder {
+  color: var(--text-muted);
+}
+
+/* Buttons */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.5rem;
+  font-family: var(--font-sans);
+  font-size: 0.95rem;
+  font-weight: 600;
+  border-radius: var(--border-radius-sm);
+  border: none;
+  cursor: pointer;
+  transition: var(--transition-fast);
+}
+
+.btn-primary {
+  background: var(--primary);
+  color: #ffffff;
+  box-shadow: 0 4px 15px var(--primary-glow);
+}
+
+.btn-primary:hover {
+  background: var(--primary-hover);
+  transform: translateY(-1px);
+  box-shadow: 0 6px 20px var(--primary-glow);
+}
+
+.btn-primary:active {
+  transform: translateY(0);
+}
+
+.btn-secondary {
+  background: rgba(197, 168, 92, 0.05);
+  color: var(--text-secondary);
+  border: 1px solid rgba(197, 168, 92, 0.15);
+}
+
+.btn-secondary:hover {
+  background: rgba(197, 168, 92, 0.1);
+  color: var(--text-primary);
+}
+
+.btn-danger {
+  background: rgba(239, 68, 68, 0.1);
+  color: #dc2626;
+  border: 1px solid rgba(239, 68, 68, 0.2);
+}
+
+.btn-danger:hover {
+  background: rgba(239, 68, 68, 0.15);
+  color: #b91c1c;
+}
+
+/* Status Badges */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 0.25rem 0.75rem;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 9999px;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 1px solid transparent;
+}
+
+.badge-queued {
+  background: var(--queued-bg);
+  color: var(--queued-text);
+  border-color: var(--queued-border);
+}
+
+.badge-washing {
+  background: var(--washing-bg);
+  color: var(--washing-text);
+  border-color: var(--washing-border);
+}
+
+.badge-drying {
+  background: var(--drying-bg);
+  color: var(--drying-text);
+  border-color: var(--drying-border);
+}
+
+.badge-ready {
+  background: var(--ready-bg);
+  color: var(--ready-text);
+  border-color: var(--ready-border);
+}
+
+.badge-taken {
+  background: var(--taken-bg);
+  color: var(--taken-text);
+  border-color: var(--taken-border);
+}
+
+.badge-paid {
+  background: var(--paid-bg);
+  color: var(--paid-text);
+}
+
+.badge-unpaid {
+  background: var(--unpaid-bg);
+  color: var(--unpaid-text);
+}
+
+/* Table Style */
+.table-container {
+  overflow-x: auto;
+  width: 100%;
+}
+
+.custom-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.custom-table th {
+  padding: 1rem;
+  font-weight: 700;
+  font-size: 0.85rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--text-secondary);
+  border-bottom: 2px solid rgba(197, 168, 92, 0.15);
+}
+
+.custom-table td {
+  padding: 1rem;
+  font-size: 0.95rem;
+  color: var(--text-primary);
+  border-bottom: 1px solid rgba(197, 168, 92, 0.08);
+  vertical-align: middle;
+}
+
+.custom-table tr:last-child td {
+  border-bottom: none;
+}
+
+.custom-table tr {
+  transition: var(--transition-fast);
+}
+
+.custom-table tr:hover {
+  background: rgba(197, 168, 92, 0.02);
+}
+
+/* Notifications */
+.notification {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  padding: 1rem 1.5rem;
+  border-radius: var(--border-radius-sm);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  z-index: 1000;
+  animation: fadeIn 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+.notification-success {
+  background: var(--primary);
+  color: white;
+  box-shadow: 0 10px 25px var(--primary-glow);
+}
+
+.notification-error {
+  background: #dc2626;
+  color: white;
+  box-shadow: 0 10px 25px rgba(220, 38, 38, 0.25);
+}
